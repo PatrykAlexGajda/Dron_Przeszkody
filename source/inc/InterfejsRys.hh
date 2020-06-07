@@ -11,18 +11,16 @@ class InterfejsRysowania{
 
 protected:
     std::shared_ptr<drawNS::Draw3DAPI> rysownik;
-    int indeks[3] = {10, 10, 10};
+    int indeks[6] = {10, 10, 10, 10, 10, 10};
 
 public:
 
-/*  Virtuale generuja undefined reference to vtable oraz undefined reference to InterfejsRysowania::usun / ::rysuj
-    Z kolei po przyrownaniu do zera tworzac Dno i Woda w mainie: "klasa abstrakcyjna niedozwolona"
+    //virtual int rysuj(std::shared_ptr<drawNS::Draw3DAPI> & api);
+    //virtual void usun(std::shared_ptr<drawNS::Draw3DAPI> & api, int a);
 
-    virtual int rysuj(std::shared_ptr<drawNS::Draw3DAPI> & api);
-    virtual void usun(std::shared_ptr<drawNS::Draw3DAPI> & api, int a);
-
-*/
-
+    // Virtuale w dalszym ciagu generuja undefined refence to vtable
+    // pomimo dopisania do kazdej klasie ktora dziedziczy po interfejsie rysowania
+    // funkcji rysuj oraz usun
 };
 
 #endif

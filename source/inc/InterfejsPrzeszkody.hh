@@ -3,9 +3,11 @@
 
 #include "InterfejsDrona.hh"
 
-class InterfejsPrzeszkody{
+/*!
+* \brief Klasa definiujaca interfejs przeszkody
+*/
 
-protected:
+class InterfejsPrzeszkody{
 
 public:
 

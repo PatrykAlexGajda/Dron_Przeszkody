@@ -71,8 +71,10 @@ public:
 
     void usun(std::shared_ptr<drawNS::Draw3DAPI> & api, int a){
 
-        api->erase_shape(a);
+       api->erase_shape(a);
     }
+
+    //int rysuj(std::shared_ptr<drawNS::Draw3DAPI> & api) override {return 0;}
 
 };
 

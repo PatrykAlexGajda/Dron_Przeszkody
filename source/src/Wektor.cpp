@@ -86,7 +86,7 @@ template <class TYP, int ROZMIAR>
 std::ostream & operator << (std::ostream &Strm, const Wektor<TYP, ROZMIAR> &W)
 {   
     for(int i=0; i<ROZMIAR; i++){
-        Strm << W[i] << "\t";
+        Strm << W[i] << "  ";
     }
     std::cout << std::endl;
     

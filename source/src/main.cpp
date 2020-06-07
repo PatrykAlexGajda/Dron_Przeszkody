@@ -22,19 +22,32 @@ std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-R,R,-R,R,-R,R,0));
 std::vector<std::shared_ptr<InterfejsPrzeszkody> > kolekcja_przeszkod;
 std::shared_ptr<Dron> ptrD;
 
-Wektor<double, 3> srodekA, srodekB;
+
+Wektor<double, 3> srodekA, srodekB, srodek1, srodek2, srodek3;
 srodekA.ustaw(12,12,12);
-srodekB.ustaw(-8,-8,0);
+srodekB.ustaw(-8,8,0);
+srodek1.ustaw(0,-16,0);
+srodek2.ustaw(12,-16,12);
+srodek3.ustaw(-12,-16,-12);
+
+std::shared_ptr<Dron> D1(new Dron(api, srodek1));
+std::shared_ptr<Dron> D2(new Dron(api, srodek2));
+std::shared_ptr<Dron> D3(new Dron(api, srodek3));
+
+//std::shared_ptr<Dron> D1(new Dron(api, srodek1));
+//std::shared_ptr<Dron> D2(new Dron(api, srodek2));
 
 std::vector<std::shared_ptr<InterfejsPrzeszkody>> przeszkody{
   std::make_shared<PrzeszkodaProst>(api, srodekA),
   std::make_shared<PrzeszkodaProst>(api, srodekB),
   std::make_shared<Woda>(api),
-  std::make_shared<Dno>(api)
+  std::make_shared<Dno>(api),
 };
 
 char czytaj;
-Dron D;
+int wyborDrona = 0;
+
+std::cout << "\nWirniki pojawia sie po wykonaniu jakiejkolwiek operacji na danym dronie!\nWybor drona nastepuje po wybraniu operacji." << std::endl;
 
 while(1){
 
@@ -52,7 +65,21 @@ while(1){
       double kat=0;
       std::cout << "Podaj kat obrotu: ";
       std::cin >> kat;
-      D.obracanieR(api, z, kat);
+
+      std::cout << "\nWybierz drona...\n";
+      std::cout << "Wspolrzedne drona 1: " << D1->getSrodek();
+      std::cout << "Wspolrzedne drona 2: " << D2->getSrodek();
+      std::cout << "Wspolrzedne drona 3: " << D3->getSrodek();
+      std::cout << "Wpisz 1, 2 lub 3...\n";
+      std::cin >> wyborDrona;
+
+      if(wyborDrona == 1){
+        D1->obracanieR(api, z, kat);
+      } else if(wyborDrona == 2){
+        D2->obracanieR(api, z, kat);
+      } else if(wyborDrona == 3){
+        D3->obracanieR(api, z, kat);
+      }
 
     } break;
 
@@ -61,7 +88,21 @@ while(1){
       double kat=0;
       std::cout << "Podaj kat obrotu: ";
       std::cin >> kat;
-      D.obracanieR(api, x, kat);
+
+      std::cout << "\nWybierz drona...\n";
+      std::cout << "Wspolrzedne drona 1: " << D1->getSrodek();
+      std::cout << "Wspolrzedne drona 2: " << D2->getSrodek();
+      std::cout << "Wspolrzedne drona 3: " << D3->getSrodek();
+      std::cout << "Wpisz 1, 2 lub 3...\n";
+      std::cin >> wyborDrona;
+
+      if(wyborDrona == 1){
+        D1->obracanieR(api, x, kat);
+      } else if(wyborDrona == 2){
+        D2->obracanieR(api, x, kat);
+      } else if(wyborDrona == 3){
+        D3->obracanieR(api, x, kat);
+      }
 
     } break;
 
@@ -70,7 +111,21 @@ while(1){
       double odl;
       std::cout << "Podaj odleglosc: ";
       std::cin >> odl;
-      D.RuchR(api, odl, przeszkody);
+
+      std::cout << "\nWybierz drona...\n";
+      std::cout << "Wspolrzedne drona 1: " << D1->getSrodek();
+      std::cout << "Wspolrzedne drona 2: " << D2->getSrodek();
+      std::cout << "Wspolrzedne drona 3: " << D3->getSrodek();
+      std::cout << "Wpisz 1, 2 lub 3...\n";
+      std::cin >> wyborDrona;
+
+      if(wyborDrona == 1){
+        D1->RuchR(api, odl, przeszkody);
+      } else if(wyborDrona == 2){
+        D2->RuchR(api, odl, przeszkody);
+      } else if(wyborDrona == 3){
+        D3->RuchR(api, odl, przeszkody);
+      }
 
     } break;
 

@@ -15,7 +15,7 @@ protected:
 public:
 
 /*!
-* \brief Konstruktor domyslny dla tworzenia zmiennej typu Dno
+* \brief Konstruktor dla tworzenia zmiennej typu Dno
 */
 	Dno(std::shared_ptr<drawNS::Draw3DAPI> &api){
 
@@ -32,19 +32,29 @@ public:
 	  }},"yellow");	
 	}
 
+/*!
+* \brief Funkcja sprawdzajaca czy dron jest na drodze do kolizji z dnem
+* \param shptrD wskaznik na drona ktorego kolizje sprawdzamy
+*/
+
     bool czy_kolizja(std::shared_ptr<InterfejsDrona> shptrD){
 
 		Wektor<double, 3> srodekDrona;
-		srodekDrona[0] = shptrD->getSrodek[0];
-		srodekDrona[1] = shptrD->getSrodek[1];
-		srodekDrona[2] = shptrD->getSrodek[2];
+		srodekDrona[0] = shptrD->getSrodek()[0];
+		srodekDrona[1] = shptrD->getSrodek()[1];
+		srodekDrona[2] = shptrD->getSrodek()[2];
+
+		std::cout << srodekDrona;
 
 		if(srodekDrona[2] <= -15){
+			std::cerr << "Operacja przerwana: Kolizja z dnem." << std::endl;
 			return true;
 		} else {
 			return false;
 		}
     }
+
+
 };
 
 
